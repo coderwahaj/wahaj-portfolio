@@ -1,0 +1,257 @@
+export const mockData = {
+  profile: {
+    name: "Muhammad Wahaj Asif",
+    title: "Software Engineer",
+    location: "Lahore, Pakistan",
+    email: "wahajasif488@gmail.com",
+    phone: "+92-313-7263488",
+    linkedin: "https://www.linkedin.com/in/muhammad-wahaj-asif-7a9118254/",
+    github: "https://github.com/coderwahaj",
+    summary:
+      "Software Engineer specializing in full-stack MERN development and intelligent applications. Passionate about building AI-powered solutions from conversational legal assistants to data-driven mental health systems using modern machine learning tools.",
+    profileImage: "https://avatars.githubusercontent.com/coderwahaj",
+  },
+  skills: {
+    frontend: [
+      { name: "React. js", level: 90, category: "Frontend" },
+      { name: "Next.js", level: 85, category: "Frontend" },
+      { name: "JavaScript (ES6+)", level: 92, category: "Frontend" },
+      { name: "Tailwind CSS", level: 90, category: "Frontend" },
+      { name: "ShadCN UI", level: 85, category: "Frontend" },
+      { name: "HTML5/CSS3", level: 95, category: "Frontend" },
+    ],
+    backend: [
+      { name: "Node. js", level: 90, category: "Backend" },
+      { name: "Express.js", level: 88, category: "Backend" },
+      { name: "MongoDB", level: 85, category: "Backend" },
+      { name: "MySQL", level: 80, category: "Backend" },
+      { name: "RESTful APIs", level: 92, category: "Backend" },
+      { name: "Python", level: 85, category: "Backend" },
+    ],
+    ai_ml: [
+      { name: "AI Agents", level: 85, category: "AI/ML" },
+      { name: "Workflow Automation", level: 88, category: "AI/ML" },
+      { name: "n8n", level: 90, category: "AI/ML" },
+      { name: "OpenAI APIs", level: 85, category: "AI/ML" },
+      { name: "Supabase", level: 82, category: "AI/ML" },
+      { name: "NLP", level: 78, category: "AI/ML" },
+      { name: "Machine Learning", level: 75, category: "AI/ML" },
+    ],
+    java: [
+      { name: "Java", level: 80, category: "Java" },
+      { name: "C++", level: 80, category: "Java" },
+      { name: "C#", level: 70, category: "Java" },
+      { name: "Python", level: 85, category: "Java" },
+      { name: "SQL", level: 80, category: "Java" },
+      { name: "JUnit Testing", level: 78, category: "Java" },
+    ],
+    tools: [
+      { name: "Git/GitHub", level: 90, category: "Tools" },
+      { name: "VS Code", level: 95, category: "Tools" },
+      { name: "Figma", level: 75, category: "Tools" },
+      { name: "Vercel", level: 85, category: "Tools" },
+      { name: "Postman", level: 88, category: "Tools" },
+      { name: "npm/yarn", level: 90, category: "Tools" },
+    ],
+  },
+  projects: [
+  {
+    id: 1,
+    title:  "DIGITAL Legal Advisor - AI Legal Assistant",
+    description: "Currently developing an AI-powered legal assistant for my Final Year Project. A dual-user platform supporting both legal professionals and ordinary citizens with document summarization, legal form generation, bail eligibility prediction, and RAG-powered chatbot for legal queries.",
+    technologies: ["Python", "FastAPI", "React. js", "LangChain", "RAG", "OpenAI GPT", "PostgreSQL", "FAISS", "Hugging Face"],
+    status: "In Development",
+    type: "AI Application",
+    date: "2025 - Present",
+    features: [
+      "Document Simplifier - converts legal documents to plain language",
+      "Legal Form Generator - auto-creates complaints, bail applications",
+      "RAG-powered Legal Chatbot for accurate legal guidance",
+      "Case Summary Module for lengthy legal judgments",
+      "Bail Eligibility Predictor using ML models",
+      "Legal Aid Navigator for complaint routing",
+      "Dual interface for citizens and legal professionals",
+      "Multilingual support (English/Urdu)"
+    ]
+  },
+  {
+    id: 2,
+    title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
+    description:  "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend. Built using the MERN stack to facilitate peer-to-peer skill exchange.",
+    technologies: ["React.js", "Node.js", "Express. js", "MongoDB", "Socket. io", "JWT"],
+    status: "Completed",
+    type: "Web Application",
+    date: "April 2025 - May 2025",
+    features:  [
+      "Real-time skill matching algorithm",
+      "User profile management",
+      "Modular React architecture",
+      "Secure authentication with JWT",
+      "Real-time chat functionality",
+      "Responsive design"
+    ]
+  },
+  {
+    id: 3,
+    title: "PitchPro – AI Automation & Content Generation Platform",
+    description: "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.  Integrated AI APIs for automated content generation.",
+    technologies: ["Next.js", "Tailwind CSS", "ShadCN", "Supabase", "Vercel", "n8n", "AI APIs"],
+    status: "Completed",
+    type: "AI Application",
+    date: "August 2025",
+    features: [
+      "AI-powered business pitch generation",
+      "Content summarization",
+      "Urdu translation capabilities",
+      "Modern responsive UI with Tailwind & ShadCN",
+      "Deployed on Vercel for production",
+      "Supabase backend integration"
+    ]
+  },
+  {
+    id: 4,
+    title: "Blog Summarizer & Quote Generator",
+    description: "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.  Built with modern web technologies for fast and reliable performance.",
+    technologies: ["Next.js", "Tailwind CSS", "ShadCN", "Supabase", "Vercel", "n8n"],
+    status: "Completed",
+    type: "Web Application",
+    date: "July 2025",
+    features:  [
+      "AI-powered blog summarization",
+      "Random quote generation",
+      "Clean and intuitive UI",
+      "Fast page load times",
+      "Responsive design",
+      "Deployed on Vercel"
+    ]
+  },
+  {
+    id: 5,
+    title: "UML Diagram Editor - Java Desktop Application",
+    description:  "Built an interactive UML Class and Use Case Diagram editor using Java and JavaFX, applying OOP principles and design patterns for scalability.  Ensured reliability through comprehensive JUnit testing and test-driven development.",
+    technologies: ["Java", "JavaFX", "JUnit", "Maven", "OOP Design Patterns"],
+    status: "Completed",
+    type: "Desktop Application",
+    date: "2024",
+    features: [
+      "Interactive UML Class diagram creation",
+      "Use Case diagram designer",
+      "Drag-and-drop interface",
+      "Export functionality to multiple formats",
+      "Comprehensive JUnit test coverage",
+      "Scalable MVC architecture",
+      "Custom JavaFX controls and styling",
+      "File persistence and project management"
+    ]
+  },
+  {
+    id: 6,
+    title: "Sustainable Life Assistance",
+    description: "Led front-end development of a website promoting eco-friendly living through interactive sustainability-focused features. Built with modern web technologies.",
+    technologies: ["Figma", "HTML5", "CSS3", "JavaScript"],
+    status: "Completed",
+    type: "Web Application",
+    date: "November 2023 - December 2023",
+    features:  [
+      "Interactive sustainability features",
+      "Eco-friendly living promotion",
+      "Responsive design",
+      "UI/UX designed in Figma",
+      "Clean HTML/CSS/JS implementation"
+    ]
+  }
+],
+  experience: [
+    {
+      id: 1,
+      position: "Web Development Intern",
+      company: "Nexium",
+      duration: "June 2024 - July 2024",
+      type: "Internship",
+      description:
+        "Built AI-powered web applications using Next.js, ShadCN, and Supabase.  Designed and maintained AI automation workflows using n8n, including API integrations and background task automation.",
+      achievements: [
+        "Developed AI-powered web applications with Next.js",
+        "Integrated ShadCN UI components for modern interfaces",
+        "Built automation workflows with n8n",
+        "Implemented API integrations",
+        "Managed background task automation",
+        "Used Supabase for backend services",
+      ],
+      technologies: [
+        "Next.js",
+        "ShadCN",
+        "Supabase",
+        "n8n",
+        "AI APIs",
+        "REST APIs",
+      ],
+    },
+    {
+      id: 2,
+      position: "NLP Intern",
+      company: "Elevyo Pathways, Cairo Egypt",
+      duration: "July 2025 - August 2025",
+      type: "Internship",
+      description:
+        "Worked as an NLP Intern at Elevyo, contributing to built AI Solutions and model deployment using Python and machine learning libraries.",
+      achievements: [
+        "Built AI solutions using Python",
+        "Deployed machine learning models",
+        "Worked with NLP libraries",
+        "Contributed to AI model development",
+        "Gained experience in ML model deployment",
+      ],
+      technologies: [
+        "Python",
+        "NLP",
+        "Machine Learning Libraries",
+        "AI Model Deployment",
+      ],
+    },
+  ],
+  education: [
+    {
+      degree: "Bachelor of Software Engineering",
+      institution: "FAST - NUCES Lahore Campus",
+      duration: "2022 - 2026",
+      status: "In Progress",
+      cgpa: "3.2",
+      details: "Final-year Software Engineering student",
+    },
+    {
+      degree: "FSc (Pre-Engineering)",
+      institution: "BISE Faisalabad",
+      duration: "2020 - 2022",
+      grade: "A+",
+    },
+    {
+      degree: "Matriculation (Science)",
+      institution: "BISE Faisalabad",
+      duration: "2018 - 2020",
+      grade: "A+",
+    },
+  ],
+  certifications: [
+    {
+      name: "Cloud Foundations (AWS Academy Graduate)",
+      issuer: "AWS",
+      date: "2024",
+    },
+    {
+      name: "Python Programming Mastery",
+      issuer: "Udemy",
+      date: "2024",
+    },
+    {
+      name: "Mastering AI Agents",
+      issuer: "Udemy",
+      date: "2025",
+    },
+    {
+      name: "Elements of AI",
+      issuer: "MinnaLearn",
+      date: "2023",
+    },
+  ],
+};
