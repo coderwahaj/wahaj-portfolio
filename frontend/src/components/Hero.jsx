@@ -1,156 +1,181 @@
-import React, { useEffect, useState } from "react";
-import { ChevronDown, Download, ExternalLink } from "lucide-react";
+import React, { useEffect, useState } from 'react';
+import { ChevronDown, Github, Linkedin, Mail, Terminal } from 'lucide-react';
 
 export default function Hero({ data }) {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const titles = [
-    "Full-Stack Developer",
-    "MERN Stack Engineer",
-    "AI Automation Specialist",
-    "Software Engineer",
-    "Web Application Developer",
-  ];
+  const [showCursor, setShowCursor] = useState(true);
+  const [terminalText, setTerminalText] = useState('');
 
   useEffect(() => {
-    const currentTitle = titles[currentIndex];
-    const reducedMotion =
-      typeof window !== "undefined" &&
-      window.matchMedia &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const interval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
 
-    if (reducedMotion) {
-      setDisplayText(currentTitle);
-      const timeout = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % titles.length);
-      }, 2500);
-      return () => clearTimeout(timeout);
-    }
+  useEffect(() => {
+    const commands = "npm run build-future";
+    let index = 0;
+    
+    const timer = setInterval(() => {
+      if (index <= commands.length) {
+        setTerminalText(commands. slice(0, index));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 100);
 
-    if (displayText.length < currentTitle.length) {
-      const timeout = setTimeout(() => {
-        setDisplayText(currentTitle.slice(0, displayText.length + 1));
-      }, 80);
-      return () => clearTimeout(timeout);
-    } else {
-      const timeout = setTimeout(() => {
-        setDisplayText("");
-        setCurrentIndex((prev) => (prev + 1) % titles.length);
-      }, 1800);
-      return () => clearTimeout(timeout);
-    }
-  }, [displayText, currentIndex]);
+    return () => clearInterval(timer);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  const firstName = data?.profile?.name?.split(" ")[0] || "Muhammad";
-  const restOfName =
-    data?.profile?.name?.split(" ").slice(1).join(" ") || "Wahaj Asif";
 
   return (
     <section
       id="home"
-      className="min-h-screen py-12 flex items-center justify-center relative overflow-hidden bg-gray-950"
+      className="min-h-screen pt-32 pb-20 flex items-center justify-center relative overflow-hidden bg-dark-bg"
       aria-label="Hero section"
     >
+      {/* Animated Grid Background */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="hidden sm:block absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-blue-500/5"></div>
-        <div className="hidden sm:block absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgo8cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMTExODI3IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMiIvPgo8L3BhdHRlcm4+CjwvZGVmcz4KPHI+CjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiIC8+Cjwvc3ZnPgo=')] opacity-15"></div>
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `
+              linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '60px 60px'
+          }}
+        ></div>
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-700 to-dark-bg"></div>
+        
+        {/* Radial Gradient Spotlight */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-white/5 to-transparent rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-5xl w-full px-4 sm:px-6 relative z-10">
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
-          <div className="w-full lg:w-1/2 text-center lg:text-left">
-            <p className="text-emerald-400 text-sm sm:text-base font-medium mb-2">
-              Hello, I'm
-            </p>
+      {/* Floating Dots */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute top-20 left-10 w-2 h-2 bg-white rounded-full animate-float"></div>
+        <div className="absolute top-40 right-20 w-3 h-3 bg-white rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-white rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute bottom-20 right-1/3 w-3 h-3 bg-white rounded-full animate-float" style={{ animationDelay: '0.5s' }}></div>
+      </div>
 
-            <h1 className="font-bold text-white mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-7xl leading-tight">
-              {firstName}
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-400">
-                {restOfName}
-              </span>
-            </h1>
+      <div className="max-w-7xl w-full px-6 sm:px-12 relative z-10">
+        <div className="text-center max-w-5xl mx-auto mb-16">
+          {/* Big Greeting */}
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-8 animate-fade-in leading-tight">
+            Hi!  Welcome to My{' '}
+            <span className="text-light-400">Portfolio</span>
+          </h1>
 
-            <div className="h-10 flex items-center justify-center lg:justify-start mb-4">
-              <span className="text-base sm:text-xl text-gray-300 font-medium tracking-tight">
-                {displayText}
-                <span className="inline-block ml-1 motion-safe:animate-pulse">
-                  |
-                </span>
-              </span>
-            </div>
+          {/* Role */}
+          <h2 className="font-bold mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight animate-fade-in-up text-white">
+            I'm a{' '}
+            <span className="text-light-400">Software Engineer</span>
+          </h2>
 
-            <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-6 max-w-xl mx-auto lg:mx-0">
-              {data?.profile?.summary ||
-                "Software Engineer specializing in full-stack development with MERN stack, AI automation, and modern web technologies."}
-            </p>
+          {/* Tagline */}
+          <p className="text-light-300 text-base sm:text-lg md:text-xl leading-relaxed mb-10 max-w-2xl mx-auto animate-fade-in font-medium" style={{ animationDelay: '0.2s' }}>
+            Building scalable web applications with modern technologies and clean architecture.
+          </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() => scrollToSection("projects")}
-                type="button"
-                aria-label="View projects"
-                className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-102 hover:shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
-              >
-                View My Work
-                <ExternalLink size={16} />
-              </button>
+          {/* CTA Button */}
+          <button
+            onClick={() => scrollToSection('about')}
+            className="group bg-white hover:bg-light-200 text-dark-800 font-semibold px-8 py-3.5 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-white/20 flex items-center justify-center gap-3 mx-auto text-base animate-scale-in"
+            style={{ animationDelay: '0.4s' }}
+          >
+            Learn a little about ME! 
+            <ChevronDown className="group-hover:translate-y-1 transition-transform" size={18} />
+          </button>
 
-              <a
-                href={data?.profile?.cvUrl || "/assets/Wahaj-Resume-MERN.pdf"}
-                download="Muhammad_Wahaj_Asif_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Download CV"
-                className="w-full sm:w-auto border border-gray-600 hover:border-emerald-400 text-gray-300 hover:text-emerald-400 font-semibold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-102 flex items-center justify-center gap-2"
-                onClick={(e) => {
-                  if (!data?.profile?.cvUrl) {
-                    // ✅ FIXED - now checking data?.profile?.cvUrl
-                    e.preventDefault();
-                    console.log("CV URL not found");
-                  }
-                }}
-              >
-                Download CV
-                <Download size={16} />
-              </a>
-            </div>
+          {/* Social Links */}
+          <div className="mt-12 flex items-center justify-center gap-6 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+            <a
+              href={data?. profile?.github || 'https://github.com/coderwahaj'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-light-500 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+              aria-label="GitHub"
+            >
+              <Github size={24} />
+            </a>
+            <a
+              href={data?.profile?.linkedin || 'https://linkedin.com/in/muhammad-wahaj-asif-7a9118254'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-light-500 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={24} />
+            </a>
+            <a
+              href={`mailto:${data?.profile?.email || 'wahajasif488@gmail.com'}`}
+              className="text-light-500 hover:text-white transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+              aria-label="Email"
+            >
+              <Mail size={24} />
+            </a>
           </div>
+        </div>
 
-          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <div className="relative group">
-              <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500 rounded-full opacity-25 group-hover:opacity-40 blur-xl transition-opacity duration-500"></div>
+        {/* VS Code Screenshot Section - ELEGANT BORDERED DESIGN */}
+        <div className="max-w-6xl mx-auto mb-12 animate-slide-up" style={{ animationDelay: '0.8s' }}>
+          <div className="relative group">
+            {/* Outer Glow Effect */}
+            <div className="absolute -inset-3 bg-gradient-to-r from-white/20 via-light-300/30 to-white/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 animate-glow-pulse"></div>
+            
+            {/* Middle Border - Gradient */}
+            <div className="absolute -inset-2 bg-gradient-to-br from-white via-light-200 to-light-100 rounded-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+            
+            {/* Inner Border */}
+            <div className="absolute -inset-1 bg-gradient-to-tr from-light-50 to-white rounded-2xl"></div>
+            
+            {/* Image Container */}
+            <div className="relative rounded-2xl overflow-hidden border-4 border-white shadow-2xl transform group-hover:scale-[1.01] transition-all duration-500">
+              {/* Place your VS Code screenshot here */}
+              <img
+                src="/assets/vscode.png"  // ← ADD YOUR IMAGE HERE
+                alt="VS Code Editor - Portfolio Project"
+                className="w-full h-auto"
+              />
+              
+              {/* Subtle overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
 
-              <div className="relative rounded-full overflow-hidden border-4 border-emerald-400/20 shadow-2xl w-44 h-44 sm:w-64 sm:h-64 lg:w-96 lg:h-96">
-                <img
-                  src={
-                    data?.profile?.profileImage ||
-                    "https://avatars.githubusercontent.com/u/coderwahaj"
-                  }
-                  alt={data?.profile?.name || "Muhammad Wahaj Asif"}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
+            {/* Decorative Corner Elements */}
+            <div className="absolute -top-2 -left-2 w-16 h-16 border-t-4 border-l-4 border-white rounded-tl-2xl opacity-50"></div>
+            <div className="absolute -top-2 -right-2 w-16 h-16 border-t-4 border-r-4 border-white rounded-tr-2xl opacity-50"></div>
+            <div className="absolute -bottom-2 -left-2 w-16 h-16 border-b-4 border-l-4 border-white rounded-bl-2xl opacity-50"></div>
+            <div className="absolute -bottom-2 -right-2 w-16 h-16 border-b-4 border-r-4 border-white rounded-br-2xl opacity-50"></div>
+
+            {/* Badge/Label */}
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+              <div className="bg-white px-6 py-2 rounded-full shadow-lg flex items-center gap-2">
+                <Terminal size={16} className="text-dark-800" />
+                <span className="text-dark-800 font-semibold text-sm">Live Coding Environment</span>
               </div>
-
-              <div className="hidden sm:block absolute top-4 -right-4 w-8 h-8 bg-emerald-400 rounded-full motion-safe:animate-pulse"></div>
-              <div className="hidden md:block absolute -bottom-4 -left-4 w-6 h-6 bg-blue-400 rounded-full motion-safe:animate-pulse" />
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button
-            onClick={() => scrollToSection("skills")}
-            aria-label="Scroll to skills"
-            className="text-gray-400 hover:text-emerald-400 transition-colors duration-300 motion-safe:animate-bounce"
+            onClick={() => scrollToSection('about')}
+            aria-label="Scroll to about"
+            className="text-light-600 hover:text-white transition-colors duration-300"
           >
             <ChevronDown size={28} />
           </button>
