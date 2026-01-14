@@ -85,7 +85,7 @@ module.exports = {
   darkMode: ["class"],
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
   theme: {
-    extend: {
+    extend:  {
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -96,7 +96,7 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          foreground:  "hsl(var(--card-foreground))",
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -116,7 +116,7 @@ module.exports = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          foreground:  "hsl(var(--accent-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -136,59 +136,70 @@ module.exports = {
         "light-bg": "#ffffff",
         "light-50": "#fafafa",
         "light-100": "#f5f5f5",
-        "light-200": "#e5e5e5",
+        "light-200":  "#e5e5e5",
         "light-300": "#d4d4d4",
         "light-400": "#a3a3a3",
         "light-500": "#737373",
-        "light-600": "#525252",
+        "light-600":  "#525252",
         "gray-accent": "#404040",
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
+        "gradient-radial":  "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic": 
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
+          to: { height:  "var(--radix-accordion-content-height)" },
         },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
+        "accordion-up":  {
+          from: { height:  "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
         "fade-in": {
           "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+          "100%":  { opacity: "1", transform:  "translateY(0)" },
         },
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(40px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+          "100%":  { opacity: "1", transform:  "translateY(0)" },
         },
         "scale-in": {
-          "0%": { opacity: "0", transform: "scale(0.95)" },
+          "0%":  { opacity: "0", transform:  "scale(0.95)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
-        "slide-in-right": {
+        "slide-in-right":  {
           "0%": { opacity: "0", transform: "translateX(100px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+          "100%": { opacity:  "1", transform: "translateX(0)" },
         },
-        "slide-in-left": {
+        "slide-in-left":  {
           "0%": { opacity: "0", transform: "translateX(-100px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
+          "100%": { opacity:  "1", transform: "translateX(0)" },
+        },
+        "slide-up": {
+          "0%": { opacity: "0", transform: "translateY(100px)" },
+          "100%":  { opacity: "1", transform:  "translateY(0)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-20px)" },
+          "50%": { transform:  "translateY(-20px)" },
+        },
+        "float-delayed": {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-15px)" },
         },
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)" },
+          "0%, 100%":  { boxShadow: "0 0 15px rgba(255, 255, 255, 0.1)" },
           "50%": { boxShadow: "0 0 25px rgba(255, 255, 255, 0.2)" },
         },
-        // In the keyframes section, add:
-        "slide-up": {
-          "0%": { opacity: "0", transform: "translateY(100px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        slide:  {
+          "0%": { transform: "translateX(-100%)" },
+          "100%":  { transform: "translateX(400%)" },
+        },
+        "spin-slow": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
         },
       },
       animation: {
@@ -199,12 +210,14 @@ module.exports = {
         "scale-in": "scale-in 0.5s ease-out",
         "slide-in-right": "slide-in-right 0.6s ease-out",
         "slide-in-left": "slide-in-left 0.6s ease-out",
-        float: "float 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
-
         "slide-up": "slide-up 1s ease-out forwards",
+        float: "float 3s ease-in-out infinite",
+        "float-delayed": "float-delayed 4s ease-in-out infinite",
+        "glow-pulse":  "glow-pulse 2s ease-in-out infinite",
+        slide: "slide 3s ease-in-out infinite",
+        "spin-slow": "spin-slow 8s linear infinite",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins:  [require("tailwindcss-animate")],
 };

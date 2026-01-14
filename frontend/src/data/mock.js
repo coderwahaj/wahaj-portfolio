@@ -34,7 +34,6 @@ export const mockData = {
       { name: "Workflow Automation", level: 88, category: "AI/ML" },
       { name: "n8n", level: 90, category: "AI/ML" },
       { name: "OpenAI APIs", level: 85, category: "AI/ML" },
-      { name: "Supabase", level: 82, category: "AI/ML" },
       { name: "NLP", level: 78, category: "AI/ML" },
       { name: "Machine Learning", level: 75, category: "AI/ML" },
     ],
