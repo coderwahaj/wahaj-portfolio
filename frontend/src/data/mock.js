@@ -10,6 +10,7 @@ export const mockData = {
     summary:
       "Software Engineer specializing in full-stack MERN development and intelligent applications. Passionate about building AI-powered solutions from conversational legal assistants to data-driven mental health systems using modern machine learning tools.",
     profileImage: "https://avatars.githubusercontent.com/coderwahaj",
+    cvUrl: "/assets/Wahaj-Resume-MERN.pdf",
   },
   skills: {
     frontend: [
@@ -55,112 +56,150 @@ export const mockData = {
     ],
   },
   projects: [
-  {
-    id: 1,
-    title:  "DIGITAL Legal Advisor - AI Legal Assistant",
-    description: "Currently developing an AI-powered legal assistant for my Final Year Project. A dual-user platform supporting both legal professionals and ordinary citizens with document summarization, legal form generation, bail eligibility prediction, and RAG-powered chatbot for legal queries.",
-    technologies: ["Python", "FastAPI", "React. js", "LangChain", "RAG", "OpenAI GPT", "PostgreSQL", "FAISS", "Hugging Face"],
-    status: "In Development",
-    type: "AI Application",
-    date: "2025 - Present",
-    features: [
-      "Document Simplifier - converts legal documents to plain language",
-      "Legal Form Generator - auto-creates complaints, bail applications",
-      "RAG-powered Legal Chatbot for accurate legal guidance",
-      "Case Summary Module for lengthy legal judgments",
-      "Bail Eligibility Predictor using ML models",
-      "Legal Aid Navigator for complaint routing",
-      "Dual interface for citizens and legal professionals",
-      "Multilingual support (English/Urdu)"
-    ]
-  },
-  {
-    id: 2,
-    title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
-    description:  "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend. Built using the MERN stack to facilitate peer-to-peer skill exchange.",
-    technologies: ["React.js", "Node.js", "Express. js", "MongoDB", "Socket. io", "JWT"],
-    status: "Completed",
-    type: "Web Application",
-    date: "April 2025 - May 2025",
-    features:  [
-      "Real-time skill matching algorithm",
-      "User profile management",
-      "Modular React architecture",
-      "Secure authentication with JWT",
-      "Real-time chat functionality",
-      "Responsive design"
-    ]
-  },
-  {
-    id: 3,
-    title: "PitchPro – AI Automation & Content Generation Platform",
-    description: "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.  Integrated AI APIs for automated content generation.",
-    technologies: ["Next.js", "Tailwind CSS", "ShadCN", "Supabase", "Vercel", "n8n", "AI APIs"],
-    status: "Completed",
-    type: "AI Application",
-    date: "August 2025",
-    features: [
-      "AI-powered business pitch generation",
-      "Content summarization",
-      "Urdu translation capabilities",
-      "Modern responsive UI with Tailwind & ShadCN",
-      "Deployed on Vercel for production",
-      "Supabase backend integration"
-    ]
-  },
-  {
-    id: 4,
-    title: "Blog Summarizer & Quote Generator",
-    description: "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.  Built with modern web technologies for fast and reliable performance.",
-    technologies: ["Next.js", "Tailwind CSS", "ShadCN", "Supabase", "Vercel", "n8n"],
-    status: "Completed",
-    type: "Web Application",
-    date: "July 2025",
-    features:  [
-      "AI-powered blog summarization",
-      "Random quote generation",
-      "Clean and intuitive UI",
-      "Fast page load times",
-      "Responsive design",
-      "Deployed on Vercel"
-    ]
-  },
-  {
-    id: 5,
-    title: "UML Diagram Editor - Java Desktop Application",
-    description:  "Built an interactive UML Class and Use Case Diagram editor using Java and JavaFX, applying OOP principles and design patterns for scalability.  Ensured reliability through comprehensive JUnit testing and test-driven development.",
-    technologies: ["Java", "JavaFX", "JUnit", "Maven", "OOP Design Patterns"],
-    status: "Completed",
-    type: "Desktop Application",
-    date: "2024",
-    features: [
-      "Interactive UML Class diagram creation",
-      "Use Case diagram designer",
-      "Drag-and-drop interface",
-      "Export functionality to multiple formats",
-      "Comprehensive JUnit test coverage",
-      "Scalable MVC architecture",
-      "Custom JavaFX controls and styling",
-      "File persistence and project management"
-    ]
-  },
-  {
-    id: 6,
-    title: "Sustainable Life Assistance",
-    description: "Led front-end development of a website promoting eco-friendly living through interactive sustainability-focused features. Built with modern web technologies.",
-    technologies: ["Figma", "HTML5", "CSS3", "JavaScript"],
-    status: "Completed",
-    type: "Web Application",
-    date: "November 2023 - December 2023",
-    features:  [
-      "Interactive sustainability features",
-      "Eco-friendly living promotion",
-      "Responsive design",
-      "UI/UX designed in Figma",
-      "Clean HTML/CSS/JS implementation"
-    ]
-  }
-],
+    {
+      id: 1,
+      title: "DIGITAL Legal Advisor - AI Legal Assistant",
+      description:
+        "Currently developing an AI-powered legal assistant for my Final Year Project. A dual-user platform supporting both legal professionals and ordinary citizens with document summarization, legal form generation, bail eligibility prediction, and RAG-powered chatbot for legal queries.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "React. js",
+        "LangChain",
+        "RAG",
+        "OpenAI GPT",
+        "PostgreSQL",
+        "FAISS",
+        "Hugging Face",
+      ],
+      status: "In Development",
+      type: "AI Application",
+      date: "2025 - Present",
+      features: [
+        "Document Simplifier - converts legal documents to plain language",
+        "Legal Form Generator - auto-creates complaints, bail applications",
+        "RAG-powered Legal Chatbot for accurate legal guidance",
+        "Case Summary Module for lengthy legal judgments",
+        "Bail Eligibility Predictor using ML models",
+        "Legal Aid Navigator for complaint routing",
+        "Dual interface for citizens and legal professionals",
+        "Multilingual support (English/Urdu)",
+      ],
+    },
+    {
+      id: 2,
+      title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
+      description:
+        "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend. Built using the MERN stack to facilitate peer-to-peer skill exchange.",
+      technologies: [
+        "React.js",
+        "Node.js",
+        "Express. js",
+        "MongoDB",
+        "Socket. io",
+        "JWT",
+      ],
+      status: "Completed",
+      type: "Web Application",
+      date: "April 2025 - May 2025",
+      features: [
+        "Real-time skill matching algorithm",
+        "User profile management",
+        "Modular React architecture",
+        "Secure authentication with JWT",
+        "Real-time chat functionality",
+        "Responsive design",
+      ],
+    },
+    {
+      id: 3,
+      title: "PitchPro – AI Automation & Content Generation Platform",
+      description:
+        "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.  Integrated AI APIs for automated content generation.",
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "ShadCN",
+        "Supabase",
+        "Vercel",
+        "n8n",
+        "AI APIs",
+      ],
+      status: "Completed",
+      type: "AI Application",
+      date: "August 2025",
+      features: [
+        "AI-powered business pitch generation",
+        "Content summarization",
+        "Urdu translation capabilities",
+        "Modern responsive UI with Tailwind & ShadCN",
+        "Deployed on Vercel for production",
+        "Supabase backend integration",
+      ],
+    },
+    {
+      id: 4,
+      title: "Blog Summarizer & Quote Generator",
+      description:
+        "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.  Built with modern web technologies for fast and reliable performance.",
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "ShadCN",
+        "Supabase",
+        "Vercel",
+        "n8n",
+      ],
+      status: "Completed",
+      type: "Web Application",
+      date: "July 2025",
+      features: [
+        "AI-powered blog summarization",
+        "Random quote generation",
+        "Clean and intuitive UI",
+        "Fast page load times",
+        "Responsive design",
+        "Deployed on Vercel",
+      ],
+    },
+    {
+      id: 5,
+      title: "UML Diagram Editor - Java Desktop Application",
+      description:
+        "Built an interactive UML Class and Use Case Diagram editor using Java and JavaFX, applying OOP principles and design patterns for scalability.  Ensured reliability through comprehensive JUnit testing and test-driven development.",
+      technologies: ["Java", "JavaFX", "JUnit", "Maven", "OOP Design Patterns"],
+      status: "Completed",
+      type: "Desktop Application",
+      date: "2024",
+      features: [
+        "Interactive UML Class diagram creation",
+        "Use Case diagram designer",
+        "Drag-and-drop interface",
+        "Export functionality to multiple formats",
+        "Comprehensive JUnit test coverage",
+        "Scalable MVC architecture",
+        "Custom JavaFX controls and styling",
+        "File persistence and project management",
+      ],
+    },
+    {
+      id: 6,
+      title: "Sustainable Life Assistance",
+      description:
+        "Led front-end development of a website promoting eco-friendly living through interactive sustainability-focused features. Built with modern web technologies.",
+      technologies: ["Figma", "HTML5", "CSS3", "JavaScript"],
+      status: "Completed",
+      type: "Web Application",
+      date: "November 2023 - December 2023",
+      features: [
+        "Interactive sustainability features",
+        "Eco-friendly living promotion",
+        "Responsive design",
+        "UI/UX designed in Figma",
+        "Clean HTML/CSS/JS implementation",
+      ],
+    },
+  ],
   experience: [
     {
       id: 1,
