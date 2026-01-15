@@ -74,6 +74,8 @@ export const mockData = {
       status: "In Development",
       type: "AI Application",
       date: "2025 - Present",
+      github: "https://github.com/coderwahaj/Digital-Legal-Advisor",
+      live: null,
       features: [
         "Document Simplifier - converts legal documents to plain language",
         "Legal Form Generator - auto-creates complaints, bail applications",
@@ -87,34 +89,6 @@ export const mockData = {
     },
     {
       id: 2,
-      title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
-      description:
-        "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend.",
-      technologies: [
-        "React.js",
-        "Node.js",
-        "Express. js",
-        "MongoDB",
-        "Socket. io",
-        "JWT",
-        "Figma",
-        "Middleware",
-        "Optimization",
-      ],
-      status: "Completed",
-      type: "Web Application",
-      date: "April 2025 - May 2025",
-      features: [
-        "Real-time skill matching algorithm",
-        "User profile management",
-        "Modular React architecture",
-        "Secure authentication with JWT",
-        "Real-time chat functionality",
-        "Responsive design",
-      ],
-    },
-    {
-      id: 3,
       title: "PitchPro – AI Automation & Content Generation Platform",
       description:
         "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.",
@@ -130,6 +104,8 @@ export const mockData = {
       status: "Completed",
       type: "AI Application",
       date: "August 2025",
+      github: "https://github.com/coderwahaj/Nexium_Pitch-Writer",
+      live: "https://nexium-pitch-writer.vercel.app",
       features: [
         "AI-powered business pitch generation",
         "Content summarization",
@@ -140,10 +116,10 @@ export const mockData = {
       ],
     },
     {
-      id: 4,
+      id: 3,
       title: "Blog Summarizer & Quote Generator",
       description:
-        "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.",
+        "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel built on Next Js.",
       technologies: [
         "Next.js",
         "Tailwind CSS",
@@ -151,10 +127,16 @@ export const mockData = {
         "Supabase",
         "Vercel",
         "n8n",
+        "AI API",
+        "Hugging Face",
+        "Figma",
+        "UI/UX"
       ],
       status: "Completed",
       type: "Web Application",
       date: "July 2025",
+      github: "https://github.com/coderwahaj/Nexium_Wahaj_Blog-Summarizer",
+      live: "https://nexium-wahaj-blog-summarizer.vercel.app",
       features: [
         "AI-powered blog summarization",
         "Random quote generation",
@@ -162,6 +144,37 @@ export const mockData = {
         "Fast page load times",
         "Responsive design",
         "Deployed on Vercel",
+      ],
+    },
+
+    {
+      id: 4,
+      title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
+      description:
+        "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend.",
+      technologies: [
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Socket.io",
+        "JWT",
+        "Figma",
+        "Middleware",
+        "Optimization",
+      ],
+      status: "Completed",
+      type: "Web Application",
+      date: "April 2025 - May 2025",
+      github: "https://github.com/ahmadwyne/skill-swap",
+      live: null,
+      features: [
+        "Real-time skill matching algorithm",
+        "User profile management",
+        "Modular React architecture",
+        "Secure authentication with JWT",
+        "Real-time chat functionality",
+        "Responsive design",
       ],
     },
     {
@@ -173,6 +186,8 @@ export const mockData = {
       status: "Completed",
       type: "Desktop Application",
       date: "2024",
+      github: "https://github.com/ahmadwyne/UML-Software---SCD-Project",
+      live: null,
       features: [
         "Interactive UML Class diagram creation",
         "Use Case diagram designer",
@@ -200,6 +215,9 @@ export const mockData = {
       status: "Completed",
       type: "Web Application",
       date: "November 2023 - December 2023",
+      github:
+        "https://github.com/coderwahaj/Sustainable-Lifestyle-Assistant-Front-End-Website-",
+      live: null,
       features: [
         "Interactive sustainability features",
         "Eco-friendly living promotion",
