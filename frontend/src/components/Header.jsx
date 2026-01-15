@@ -4,12 +4,32 @@ import { Menu, X, Briefcase } from 'lucide-react';
 export default function Header({ data }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Detect active section
+      const sections = ['home', 'about', 'projects', 'experience', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document. getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
+
     window. addEventListener('scroll', handleScroll);
+    handleScroll(); // Check on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -41,7 +61,7 @@ export default function Header({ data }) {
     >
       <nav className="max-w-7xl mx-auto px-6 sm:px-12 py-5">
         <div className="flex items-center justify-between">
-          {/* Logo - Enhanced with better hover effects */}
+          {/* Logo */}
           <button
             onClick={() => scrollToSection('home')}
             className="text-3xl font-bold text-white hover:text-light-200 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
@@ -49,24 +69,38 @@ export default function Header({ data }) {
           >
             <span className="relative">
               {firstName}
-              {/* Animated underline on hover */}
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
             </span>
-            <span className="hidden sm:inline text-gray-500 text-base font-normal group-hover:text-light-400 transition-colors duration-300">
+            <span className="hidden sm:inline text-gray-500 text-base font-normal group-hover: text-light-400 transition-colors duration-300">
               portfolio
             </span>
           </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
-            {navItems. map((item) => (
+            {navItems.map((item) => (
               <button
                 key={item. id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold text-base relative group"
+                className={`text-gray-300 hover:text-white transition-colors duration-300 font-semibold text-base relative group ${
+                  activeSection === item.id ?  'text-white' : ''
+                }`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover: w-full transition-all duration-300"></span>
+                
+                {/* Permanent underline when active */}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ${
+                    activeSection === item.id ?  'w-full' : 'w-0'
+                  }`}
+                ></span>
+                
+                {/* Hover underline (only shows when NOT active) */}
+                <span
+                  className={`absolute bottom-0 left-0 h-0.5 bg-white/50 group-hover:w-full transition-all duration-300 ${
+                    activeSection === item.id ? 'w-0 opacity-0' : 'w-0'
+                  }`}
+                ></span>
               </button>
             ))}
             
@@ -74,7 +108,7 @@ export default function Header({ data }) {
             <a
               href={data?.profile?.cvUrl || '/assets/Wahaj-Resume-MERN.pdf'}
               download="Muhammad_Wahaj_Asif_Resume.pdf"
-              className="bg-white hover:bg-light-200 text-dark-800 font-bold px-7 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/30 flex items-center gap-2 text-base"
+              className="bg-white hover: bg-light-200 text-dark-800 font-bold px-7 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-white/30 flex items-center gap-2 text-base"
             >
               <Briefcase size={18} />
               Resume
@@ -95,17 +129,21 @@ export default function Header({ data }) {
         {isMenuOpen && (
           <div className="md:hidden mt-6 pb-6 animate-fade-in">
             <div className="flex flex-col gap-4">
-              {navItems.map((item) => (
+              {navItems. map((item) => (
                 <button
-                  key={item. id}
+                  key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold text-left py-3 border-b border-slate-800 text-base"
+                  className={`text-gray-300 hover:text-white transition-colors duration-300 font-semibold text-left py-3 border-b text-base ${
+                    activeSection === item.id
+                      ? 'text-white border-white'
+                      : 'border-slate-800'
+                  }`}
                 >
                   {item.label}
                 </button>
               ))}
               <a
-                href={data?.profile?. cvUrl || '/assets/Wahaj-Resume-MERN. pdf'}
+                href={data?.profile?.cvUrl || '/assets/Wahaj-Resume-MERN. pdf'}
                 download="Muhammad_Wahaj_Asif_Resume.pdf"
                 className="bg-white hover:bg-light-200 text-dark-800 font-bold px-6 py-3 rounded-full transition-all duration-300 text-center flex items-center justify-center gap-2 mt-2"
               >
