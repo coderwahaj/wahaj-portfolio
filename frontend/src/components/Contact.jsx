@@ -100,7 +100,7 @@ export default function Contact({ data }) {
   return (
     <section
       id="contact"
-      className="min-h-screen py-32 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
+      className="min-h-screen py-8 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
       aria-label="Contact section"
     >
       {/* Toast Container */}
