@@ -59,7 +59,7 @@ export const mockData = {
       id: 1,
       title: "DIGITAL Legal Advisor - AI Legal Assistant",
       description:
-        "Currently developing an AI-powered legal assistant for my Final Year Project. A dual-user platform supporting both legal professionals and ordinary citizens with document summarization, legal form generation, bail eligibility prediction, and RAG-powered chatbot for legal queries.",
+        "Currently developing an AI-powered legal assistant for my Final Year Project. A dual-user platform supporting both legal professionals and citizens.",
       technologies: [
         "Python",
         "FastAPI",
@@ -89,7 +89,7 @@ export const mockData = {
       id: 2,
       title: "SkillSwap – Peer-to-Peer Skill Exchange Platform",
       description:
-        "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend. Built using the MERN stack to facilitate peer-to-peer skill exchange.",
+        "A collaborative learning platform with real-time skill matching, user profiles, and a modular React-based frontend.",
       technologies: [
         "React.js",
         "Node.js",
@@ -97,6 +97,9 @@ export const mockData = {
         "MongoDB",
         "Socket. io",
         "JWT",
+        "Figma",
+        "Middleware",
+        "Optimization",
       ],
       status: "Completed",
       type: "Web Application",
@@ -114,7 +117,7 @@ export const mockData = {
       id: 3,
       title: "PitchPro – AI Automation & Content Generation Platform",
       description:
-        "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.  Integrated AI APIs for automated content generation.",
+        "Developed and deployed a full-stack web application to generate business pitches, provide summaries, and translate content into Urdu.",
       technologies: [
         "Next.js",
         "Tailwind CSS",
@@ -140,7 +143,7 @@ export const mockData = {
       id: 4,
       title: "Blog Summarizer & Quote Generator",
       description:
-        "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.  Built with modern web technologies for fast and reliable performance.",
+        "Developed and deployed full-stack web apps:  a Blog Summarizer and a Quote Generator, deployed on Vercel.",
       technologies: [
         "Next.js",
         "Tailwind CSS",
@@ -165,7 +168,7 @@ export const mockData = {
       id: 5,
       title: "UML Diagram Editor - Java Desktop Application",
       description:
-        "Built an interactive UML Class and Use Case Diagram editor using Java and JavaFX, applying OOP principles and design patterns for scalability.  Ensured reliability through comprehensive JUnit testing and test-driven development.",
+        "Built an interactive UML Class and Use Case Diagram editor using Java and JavaFX, applying OOP principles and design patterns for scalability.",
       technologies: ["Java", "JavaFX", "JUnit", "Maven", "OOP Design Patterns"],
       status: "Completed",
       type: "Desktop Application",
@@ -183,10 +186,17 @@ export const mockData = {
     },
     {
       id: 6,
-      title: "Sustainable Life Assistance",
+      title: "Sustainable Life Assistance(Figma)",
       description:
-        "Led front-end development of a website promoting eco-friendly living through interactive sustainability-focused features. Built with modern web technologies.",
-      technologies: ["Figma", "HTML5", "CSS3", "JavaScript"],
+        "Led front-end development of a website promoting eco-friendly living through interactive sustainability-focused features.",
+      technologies: [
+        "Figma",
+        "HTML5",
+        "CSS3",
+        "JavaScript",
+        "Golden Principles",
+        "UI/UX",
+      ],
       status: "Completed",
       type: "Web Application",
       date: "November 2023 - December 2023",

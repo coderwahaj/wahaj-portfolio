@@ -1,48 +1,57 @@
 import React from "react";
+import { useScrollAnimation } from "../hooks/useScrollAnimation";
 
 export default function Skills({ data }) {
-  const skillCategories = [
-    { name: "Frontend", skills: data?.skills?.frontend || [], color: "dark" },
-    { name: "Backend", skills: data?.skills?.backend || [], color: "medium" },
-    { name: "AI/ML", skills: data?. skills?.ai_ml || [], color: "light" },
-    { name: "Tools", skills: data?.skills?.tools || [], color: "darker" },
-  ];
+  const [headerRef, headerVisible] = useScrollAnimation(0.2);
+  const [skillsRef, skillsVisible] = useScrollAnimation(0.1);
 
-  const getColorClasses = (color) => {
-    const colors = {
-      dark: "bg-dark-800/10 text-dark-800 border-dark-700/30 hover:bg-dark-800 hover:text-white hover:border-dark-800",
-      medium: "bg-dark-700/10 text-dark-700 border-dark-600/30 hover:bg-dark-700 hover:text-white hover:border-dark-700",
-      light: "bg-dark-600/10 text-dark-600 border-dark-500/30 hover:bg-dark-600 hover:text-white hover:border-dark-600",
-      darker: "bg-dark-900/10 text-dark-900 border-dark-800/30 hover:bg-dark-900 hover:text-white hover: border-dark-900",
-    };
-    return colors[color] || colors.dark;
-  };
+  const skillCategories = [
+    {
+      name: "Frontend",
+      skills: data?.skills?.frontend || [],
+      gradient: "from-slate-800 to-slate-700",
+      borderColor: "border-slate-600/50",
+      glowColor: "hover:shadow-slate-500/20",
+    },
+    {
+      name: "Backend",
+      skills: data?.skills?.backend || [],
+      gradient: "from-zinc-800 to-zinc-700",
+      borderColor: "border-zinc-600/50",
+      glowColor: "hover: shadow-zinc-500/20",
+    },
+    {
+      name: "AI/ML",
+      skills: data?.skills?.ai_ml || [],
+      gradient: "from-neutral-800 to-neutral-700",
+      borderColor: "border-neutral-600/50",
+      glowColor: "hover: shadow-neutral-500/20",
+    },
+    {
+      name: "Tools",
+      skills: data?.skills?.tools || [],
+      gradient: "from-gray-800 to-gray-700",
+      borderColor: "border-gray-600/50",
+      glowColor: "hover: shadow-gray-500/20",
+    },
+  ];
 
   return (
     <section
       id="skills"
-      className="min-h-screen py-20 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
+      className="min-h-screen py-8 px-6 sm:px-12 bg-dark-bg relative"
       aria-label="Skills section"
     >
-      {/* Curved Wave at Top */}
-      <div className="absolute top-0 left-0 right-0 overflow-hidden leading-none">
-        <svg 
-          className="relative block w-full h-24 sm:h-32 md:h-40" 
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none"
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Section Header with scroll animation */}
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-1000 ${
+            headerVisible
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 -translate-y-10"
+          }`}
         >
-          <path 
-            d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,0 L0,0 Z" 
-            fill="#ffffff"
-            className="shape-fill"
-          ></path>
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto relative z-10 pt-20">
-        {/* Section Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-light-200 to-white bg-clip-text text-transparent">
               Technical
@@ -56,41 +65,64 @@ export default function Skills({ data }) {
           </p>
         </div>
 
-        {/* Skills Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Skills Grid with scroll animation */}
+        <div
+          ref={skillsRef}
+          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {skillCategories.map((category, catIndex) => (
             <div
               key={category.name}
-              className="bg-gradient-to-br from-dark-700 to-dark-600 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-dark-500 animate-fade-in-up"
-              style={{ animationDelay: `${catIndex * 0.1}s` }}
+              className={`bg-gradient-to-br ${
+                category.gradient
+              } backdrop-blur-sm rounded-2xl p-6 shadow-2xl ${
+                category.glowColor
+              } transition-all duration-500 border-2 ${
+                category.borderColor
+              } transform hover:-translate-y-3 hover:scale-105 ${
+                skillsVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-20"
+              }`}
+              style={{ transitionDelay: `${catIndex * 150}ms` }}
             >
               {/* Category Header */}
-              <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-white to-light-200 bg-clip-text text-transparent">
+              <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
                 {category.name}
               </h3>
 
               {/* Skills List */}
               <div className="space-y-3">
-                {category.skills. map((skill, index) => (
+                {category.skills.map((skill, index) => (
                   <div
                     key={index}
-                    className={`group px-4 py-3 rounded-xl border transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${getColorClasses(
-                      category.color
-                    )}`}
+                    className={`group px-4 py-3 rounded-xl border-2 border-white/20 bg-white/5 hover:bg-white hover:border-white transition-all duration-300 transform hover:scale-105 cursor-pointer ${
+                      skillsVisible
+                        ? "opacity-100 translate-x-0"
+                        : "opacity-0 -translate-x-10"
+                    }`}
+                    style={{
+                      transitionDelay: `${catIndex * 150 + index * 50}ms`,
+                    }}
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-semibold text-sm">
+                      <span className="font-semibold text-sm text-white group-hover:text-dark-800 transition-colors">
                         {skill.name}
                       </span>
-                      <span className="text-xs opacity-75 group-hover:opacity-100">
+                      <span className="text-xs text-light-300 group-hover:text-dark-600 transition-colors">
                         {skill.level}%
                       </span>
                     </div>
                     {/* Progress bar */}
-                    <div className="mt-2 h-1 bg-dark-500/30 rounded-full overflow-hidden">
+                    <div className="mt-2 h-1. 5 bg-white/10 rounded-full overflow-hidden">
                       <div
-                        className={`h-full bg-current transition-all duration-1000 ease-out`}
-                        style={{ width: `${skill.level}%` }}
+                        className="h-full bg-white group-hover:bg-dark-800 transition-all duration-1000 ease-out rounded-full"
+                        style={{
+                          width: skillsVisible ? `${skill.level}%` : "0%",
+                          transitionDelay: `${
+                            catIndex * 150 + index * 50 + 200
+                          }ms`,
+                        }}
                       ></div>
                     </div>
                   </div>
@@ -99,22 +131,6 @@ export default function Skills({ data }) {
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Curved Wave at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-none rotate-180">
-        <svg 
-          className="relative block w-full h-24 sm:h-32 md:h-40" 
-          xmlns="http://www.w3.org/2000/svg" 
-          viewBox="0 0 1200 120" 
-          preserveAspectRatio="none"
-        >
-          <path 
-            d="M0,0 C150,100 350,0 600,50 C850,100 1050,0 1200,50 L1200,0 L0,0 Z" 
-            fill="#ffffff"
-            className="shape-fill"
-          ></path>
-        </svg>
       </div>
     </section>
   );
