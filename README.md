@@ -1,7 +1,7 @@
 # Wahaj Asif - Portfolio Website
 A modern, fully responsive portfolio website showcasing my journey as a Full Stack Developer and AI enthusiast. Built with React and deployed on Vercel.
 
-![Portfolio Preview](public/assets/preview.png)
+![Portfolio Preview](frontend/public/assets/preview.png)
 
 ## 🌐 Live Demo
 
