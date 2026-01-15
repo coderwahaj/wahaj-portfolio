@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Send, Mail, MapPin, Phone, Github, Linkedin } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
+import emailjs from "@emailjs/browser";
 
 export default function Contact({ data }) {
   const [headerRef, headerVisible] = useScrollAnimation(0.2);
@@ -8,10 +9,10 @@ export default function Contact({ data }) {
   const [rightRef, rightVisible] = useScrollAnimation(0.2);
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
+    from_name: "",      // ✅ Changed from 'name'
+    from_email: "",     // ✅ Changed from 'email'
     subject: "",
-    message:  "",
+    message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -27,25 +28,43 @@ export default function Contact({ data }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID,
+        process.env. REACT_APP_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: formData.from_name,
+          from_email: formData.from_email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("✅ Email sent successfully:", result.text);
       setIsSubmitting(false);
       setSubmitStatus("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ from_name: "", from_email: "", subject: "", message: "" });
 
       setTimeout(() => setSubmitStatus(null), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error("❌ Email send failed:", error);
+      setIsSubmitting(false);
+      setSubmitStatus("error");
+
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   return (
     <section
       id="contact"
-      className="min-h-screen py-8 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
+      className="min-h-screen py-32 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
       aria-label="Contact section"
     >
-      
-
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div
@@ -53,7 +72,7 @@ export default function Contact({ data }) {
           className={`text-center mb-16 transition-all duration-1000 ${
             headerVisible
               ? "opacity-100 translate-y-0"
-              :  "opacity-0 -translate-y-10"
+              : "opacity-0 -translate-y-10"
           }`}
         >
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
@@ -82,7 +101,7 @@ export default function Contact({ data }) {
           >
             <div>
               <h3 className="text-3xl font-bold text-white mb-6">
-                Let's talk about everything!
+                Let's talk about everything! 
               </h3>
               <p className="text-light-400 mb-8">
                 Don't like forms? Send me an email directly. 👋
@@ -115,7 +134,7 @@ export default function Contact({ data }) {
                 <div>
                   <p className="text-sm text-light-400">Phone</p>
                   <p className="text-white font-semibold">
-                    {data?.profile?. phone || "+92-313-7263488"}
+                    {data?. profile?.phone || "+92-313-7263488"}
                   </p>
                 </div>
               </div>
@@ -180,35 +199,35 @@ export default function Contact({ data }) {
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
                   <label
-                    htmlFor="name"
+                    htmlFor="from_name"
                     className="block text-sm font-semibold text-white mb-2"
                   >
                     Your Name
                   </label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="from_name"
+                    name="from_name"
+                    value={formData.from_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus: outline-none transition-colors duration-300"
                     placeholder="Steve Smith"
                   />
                 </div>
 
                 <div>
                   <label
-                    htmlFor="email"
+                    htmlFor="from_email"
                     className="block text-sm font-semibold text-white mb-2"
                   >
                     Your Email
                   </label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    id="from_email"
+                    name="from_email"
+                    value={formData.from_email}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300"
@@ -256,8 +275,15 @@ export default function Contact({ data }) {
               </div>
 
               {submitStatus === "success" && (
-                <div className="bg-green-500/20 border-2 border-green-500 text-green-400 px-4 py-3 rounded-xl animate-fade-in">
-                  Thank you!  Your message has been sent successfully. 
+                <div className="bg-green-500/20 border-2 border-green-500 text-green-400 px-4 py-3 rounded-xl">
+                  ✅ Thank you! Your message has been sent successfully. 
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="bg-red-500/20 border-2 border-red-500 text-red-400 px-4 py-3 rounded-xl">
+                  ❌ Oops!  Something went wrong. Please try again or email me
+                  directly. 
                 </div>
               )}
 
