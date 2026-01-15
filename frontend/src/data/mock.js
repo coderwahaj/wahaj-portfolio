@@ -284,7 +284,7 @@ export const mockData = {
     {
       name: "Cloud Foundations (AWS Academy Graduate)",
       issuer: "AWS",
-      date: "2024",
+      date: "2026",
     },
     {
       name: "Python Programming Mastery",
@@ -300,6 +300,11 @@ export const mockData = {
       name: "Elements of AI",
       issuer: "MinnaLearn",
       date: "2023",
+    },
+    {
+      name: "CSS and Javascript Crash Course",
+      issuer: "Udemy",
+      date: "2024",
     },
   ],
 };

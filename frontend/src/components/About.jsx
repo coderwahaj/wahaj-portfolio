@@ -47,7 +47,7 @@ export default function About({ data }) {
               </p>
               {/* Sliding line animation - monochrome gradient */}
               <div className="relative h-1 w-full bg-light-200 rounded-full overflow-hidden">
-                <div className="absolute h-full w-32 bg-gradient-to-r from-dark-800 via-dark-600 to-dark-700 rounded-full animate-slide"></div>
+                <div className="absolute h-full w-32 bg-gradient-to-r  from-blue-950 via-blue-500 to-blue-800 rounded-full animate-slide"></div>
               </div>
             </div>
 
@@ -56,7 +56,7 @@ export default function About({ data }) {
                 Know more
               </span>{" "}
               <br />
-              <span className="bg-gradient-to-r from-dark-800 via-dark-700 to-dark-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-950 via-blue-500 to-blue-800 bg-clip-text text-transparent">
                 About me
               </span>
             </h2>

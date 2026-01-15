@@ -23,13 +23,13 @@ export default function Header({ data }) {
 
   const navItems = [
     { id:  'home', label: 'Home' },
-    { id: 'about', label: 'About Me' },
+    { id:  'about', label: 'About Me' },
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
   ];
 
-  const firstName = data?.profile?.name?.split(' ')[1] || 'Wahaj';
+  const firstName = data?.profile?. name?.split(' ')[1] || 'Wahaj';
 
   return (
     <header
@@ -41,29 +41,36 @@ export default function Header({ data }) {
     >
       <nav className="max-w-7xl mx-auto px-6 sm:px-12 py-5">
         <div className="flex items-center justify-between">
-          {/* Logo - LARGER */}
+          {/* Logo - Enhanced with better hover effects */}
           <button
             onClick={() => scrollToSection('home')}
-            className="text-3xl font-bold text-white hover:text-light-400 transition-colors duration-300 flex items-center gap-2"
+            className="text-3xl font-bold text-white hover:text-light-200 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
+            aria-label="Go to home"
           >
-            <span>{firstName}</span>
-            <span className="hidden sm:inline text-gray-500 text-base font-normal">portfolio</span>
+            <span className="relative">
+              {firstName}
+              {/* Animated underline on hover */}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+            </span>
+            <span className="hidden sm:inline text-gray-500 text-base font-normal group-hover:text-light-400 transition-colors duration-300">
+              portfolio
+            </span>
           </button>
 
-          {/* Desktop Navigation - LARGER */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-10">
-            {navItems.map((item) => (
+            {navItems. map((item) => (
               <button
-                key={item.id}
+                key={item. id}
                 onClick={() => scrollToSection(item.id)}
                 className="text-gray-300 hover:text-white transition-colors duration-300 font-semibold text-base relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-white group-hover: w-full transition-all duration-300"></span>
               </button>
             ))}
             
-            {/* Resume Button - LARGER */}
+            {/* Resume Button */}
             <a
               href={data?.profile?.cvUrl || '/assets/Wahaj-Resume-MERN.pdf'}
               download="Muhammad_Wahaj_Asif_Resume.pdf"
@@ -74,7 +81,7 @@ export default function Header({ data }) {
             </a>
           </div>
 
-          {/* Mobile Menu Button - LARGER */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-white hover:text-light-400 transition-colors duration-300"

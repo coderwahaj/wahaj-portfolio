@@ -24,7 +24,7 @@ export default function Projects({ data }) {
 
     return data.projects.map((project) => ({
       ...project,
-      image: projectImageMap[project.title] || "/assets/vscode.png",
+      image: projectImageMap[project.title] || "/assets/sustainable lifestyle.jpeg",
       github: project.github || `https://github.com/coderwahaj/${project.title.toLowerCase().split(' ')[0]}`,
       live: project.live || null,
     }));
