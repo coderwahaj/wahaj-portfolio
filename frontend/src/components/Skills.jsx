@@ -134,4 +134,6 @@ export default function Skills({ data }) {
       </div>
     </section>
   );
+
+  
 }
