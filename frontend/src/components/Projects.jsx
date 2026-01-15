@@ -8,11 +8,13 @@ export default function Projects({ data }) {
 
   // Image mapping based on project titles from mock data
   const projectImageMap = {
-    "DIGITAL Legal Advisor - AI Legal Assistant": "/assets/digital-legal-advisor.jfif",
+    "DIGITAL Legal Advisor - AI Legal Assistant":
+      "/assets/digital-legal-advisor.jfif",
     "SkillSwap – Peer-to-Peer Skill Exchange Platform": "/assets/skillswap.jpg",
-    "PitchPro – AI Automation & Content Generation Platform": "/assets/PitchPro.png",
+    "PitchPro – AI Automation & Content Generation Platform":
+      "/assets/PitchPro.png",
     "Blog Summarizer & Quote Generator": "/assets/blog-summarizer.png",
-    "UML Diagram Editor - Java Desktop Application":  "/assets/uml.png",
+    "UML Diagram Editor - Java Desktop Application": "/assets/uml.png",
     "Sustainable Life Assistance": "/assets/sustainable lifestyle.jpeg",
   };
 
@@ -24,8 +26,13 @@ export default function Projects({ data }) {
 
     return data.projects.map((project) => ({
       ...project,
-      image: projectImageMap[project.title] || "/assets/sustainable lifestyle.jpeg",
-      github: project.github || `https://github.com/coderwahaj/${project.title.toLowerCase().split(' ')[0]}`,
+      image:
+        projectImageMap[project.title] || "/assets/sustainable lifestyle.jpeg",
+      github:
+        project.github ||
+        `https://github.com/coderwahaj/${
+          project.title.toLowerCase().split(" ")[0]
+        }`,
       live: project.live || null,
     }));
   };
@@ -37,7 +44,7 @@ export default function Projects({ data }) {
   const getStatusColor = (status) => {
     return status === "Completed"
       ? "bg-green-500/10 text-green-400 border-green-500/30"
-      :  status === "In Development"
+      : status === "In Development"
       ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/30"
       : "bg-blue-500/10 text-blue-400 border-blue-500/30";
   };
@@ -70,7 +77,7 @@ export default function Projects({ data }) {
           ref={headerRef}
           className={`text-center mb-16 transition-all duration-1000 ${
             headerVisible
-              ?  "opacity-100 translate-y-0"
+              ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-10"
           }`}
         >
@@ -90,9 +97,9 @@ export default function Projects({ data }) {
         {/* Projects Grid */}
         <div
           ref={projectsRef}
-          className="grid md: grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
-          {projects. map((project, index) => (
+          {projects.map((project, index) => (
             <div
               key={project.id || index}
               className={`group bg-gradient-to-br from-dark-700/50 to-dark-600/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl hover:shadow-white/10 transition-all duration-500 border-2 border-dark-500/50 transform hover:-translate-y-3 hover:scale-105 ${
@@ -109,11 +116,14 @@ export default function Projects({ data }) {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    onLoad={() => console.log(`✅ Image loaded: ${project. image}`)}
+                    onLoad={() =>
+                      console.log(`✅ Image loaded: ${project.image}`)
+                    }
                     onError={(e) => {
                       console.error(`❌ Failed to load: ${project.image}`);
-                      e.target. onerror = null;
-                      e. target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23262626' width='400' height='300'/%3E%3Ctext fill='%23666' font-family='sans-serif' font-size='60' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E🚀%3C/text%3E%3C/svg%3E";
+                      e.target.onerror = null;
+                      e.target.src =
+                        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%23262626' width='400' height='300'/%3E%3Ctext fill='%23666' font-family='sans-serif' font-size='60' x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle'%3E🚀%3C/text%3E%3C/svg%3E";
                     }}
                   />
                 ) : (
@@ -136,10 +146,10 @@ export default function Projects({ data }) {
               {/* Project Content */}
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-light-200 transition-colors">
-                  {project. title}
+                  {project.title}
                 </h3>
                 <p className="text-light-400 text-sm mb-4 line-clamp-3">
-                  {project. description}
+                  {project.description}
                 </p>
 
                 {/* Tech Stack - Show all that fit, then count remaining */}
