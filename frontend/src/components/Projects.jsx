@@ -51,7 +51,7 @@ export default function Projects({ data }) {
       {/* Wavy separator at top */}
       <div className="absolute top-0 left-0 right-0 overflow-hidden leading-none">
         <svg
-          className="relative block w-full h-24 sm: h-32 md:h-40"
+          className="relative block w-full h-24 sm:h-32 md:h-40"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
@@ -74,7 +74,7 @@ export default function Projects({ data }) {
               : "opacity-0 -translate-y-10"
           }`}
         >
-          <h2 className="text-5xl sm: text-6xl font-bold mb-4">
+          <h2 className="text-5xl sm:text-6xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-light-200 to-white bg-clip-text text-transparent">
               Featured
             </span>{" "}
@@ -90,7 +90,7 @@ export default function Projects({ data }) {
         {/* Projects Grid */}
         <div
           ref={projectsRef}
-          className="grid md: grid-cols-2 lg: grid-cols-3 gap-8"
+          className="grid md: grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {projects. map((project, index) => (
             <div
@@ -135,7 +135,7 @@ export default function Projects({ data }) {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover: text-light-200 transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-light-200 transition-colors">
                   {project. title}
                 </h3>
                 <p className="text-light-400 text-sm mb-4 line-clamp-3">
