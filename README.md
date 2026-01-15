@@ -1,11 +1,11 @@
-# 🚀 Wahaj Asif - Portfolio Website
+#  Wahaj Asif - Portfolio Website
 A modern, fully responsive portfolio website showcasing my journey as a Full Stack Developer and AI enthusiast. Built with React and deployed on Vercel.
 
-![Portfolio Preview](public/assets/portfolio-preview.png)
+![Portfolio Preview](public/assets/preview.png)
 
 ## 🌐 Live Demo
 
-**[View Live Portfolio →](https://wahaj-portfolio.vercel.app)**
+**[View Live Portfolio →](https://wahaj-portfolio-pi.vercel.app/)**
 
 ---
 
@@ -248,7 +248,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 **Wahaj Asif**
 
-- Portfolio: [wahaj-portfolio.vercel.app](https://wahaj-portfolio.vercel. app)
+- Portfolio: [wahaj-portfolio.vercel.app](https://wahaj-portfolio-pi.vercel.app)
 - GitHub: [@coderwahaj](https://github.com/coderwahaj)
 - LinkedIn: [Muhammad Wahaj Asif](https://linkedin.com/in/muhammad-wahaj-asif-7a9118254)
 - Email: wahajasif488@gmail.com
