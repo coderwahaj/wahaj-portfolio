@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Send, Mail, MapPin, Phone, Github, Linkedin } from "lucide-react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Contact({ data }) {
   const [headerRef, headerVisible] = useScrollAnimation(0.2);
@@ -9,32 +10,40 @@ export default function Contact({ data }) {
   const [rightRef, rightVisible] = useScrollAnimation(0.2);
 
   const [formData, setFormData] = useState({
-    from_name: "",      // ✅ Changed from 'name'
-    from_email: "",     // ✅ Changed from 'email'
+    from_name:  "",
+    from_email: "",
     subject: "",
     message: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target. name]: e.target.value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus(null);
+
+    // Loading toast
+    const loadingToast = toast.loading('Sending your message... ', {
+      style: {
+        borderRadius: '12px',
+        background: '#1f2937',
+        color:  '#fff',
+        border: '2px solid #374151',
+      },
+    });
 
     try {
       // Send email using EmailJS
       const result = await emailjs.send(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,
-        process.env. REACT_APP_EMAILJS_TEMPLATE_ID,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.from_name,
           from_email: formData.from_email,
@@ -44,18 +53,47 @@ export default function Contact({ data }) {
         process.env.REACT_APP_EMAILJS_PUBLIC_KEY
       );
 
-      console.log("✅ Email sent successfully:", result.text);
+      console.log("✅ Email sent successfully:", result. text);
+      
+      // Dismiss loading and show success
+      toast.dismiss(loadingToast);
+      toast.success('Message sent successfully!  I\'ll get back to you soon. ', {
+        duration: 5000,
+        style: {
+          borderRadius: '12px',
+          background: '#1f2937',
+          color: '#fff',
+          border: '2px solid #000000',
+        },
+        iconTheme: {
+          primary: '#10b981',
+          secondary: '#fff',
+        },
+      });
+
       setIsSubmitting(false);
-      setSubmitStatus("success");
       setFormData({ from_name: "", from_email: "", subject: "", message: "" });
 
-      setTimeout(() => setSubmitStatus(null), 5000);
     } catch (error) {
       console.error("❌ Email send failed:", error);
-      setIsSubmitting(false);
-      setSubmitStatus("error");
+      
+      // Dismiss loading and show error
+      //toast.dismiss(loadingToast);
+      toast.error('Oops! Something went wrong.  Please try again or email me directly.', {
+        duration: 5000,
+        style: {
+          borderRadius: '12px',
+          background: '#1f2937',
+          color: '#fff',
+          border: '2px solid #ef4444',
+        },
+        iconTheme: {
+          primary: '#ef4444',
+          secondary: '#fff',
+        },
+      });
 
-      setTimeout(() => setSubmitStatus(null), 5000);
+      setIsSubmitting(false);
     }
   };
 
@@ -65,6 +103,22 @@ export default function Contact({ data }) {
       className="min-h-screen py-32 px-6 sm:px-12 bg-dark-bg relative overflow-hidden"
       aria-label="Contact section"
     >
+      {/* Toast Container */}
+      <Toaster 
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#1f2937',
+            color: '#fff',
+            fontSize: '14px',
+            fontWeight: '500',
+          },
+        }}
+      />
+
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section Header */}
         <div
@@ -72,7 +126,7 @@ export default function Contact({ data }) {
           className={`text-center mb-16 transition-all duration-1000 ${
             headerVisible
               ? "opacity-100 translate-y-0"
-              : "opacity-0 -translate-y-10"
+              :  "opacity-0 -translate-y-10"
           }`}
         >
           <h2 className="text-5xl sm:text-6xl font-bold mb-4">
@@ -112,7 +166,7 @@ export default function Contact({ data }) {
             <div className="space-y-6">
               <a
                 href={`mailto:${
-                  data?.profile?.email || "wahajasif488@gmail.com"
+                  data?. profile?.email || "wahajasif488@gmail.com"
                 }`}
                 className="flex items-center gap-4 group"
               >
@@ -134,7 +188,7 @@ export default function Contact({ data }) {
                 <div>
                   <p className="text-sm text-light-400">Phone</p>
                   <p className="text-white font-semibold">
-                    {data?. profile?.phone || "+92-313-7263488"}
+                    {data?.profile?. phone || "+92-313-7263488"}
                   </p>
                 </div>
               </div>
@@ -169,7 +223,7 @@ export default function Contact({ data }) {
                 </a>
                 <a
                   href={
-                    data?.profile?.linkedin ||
+                    data?.profile?. linkedin ||
                     "https://linkedin.com/in/muhammad-wahaj-asif-7a9118254"
                   }
                   target="_blank"
@@ -211,7 +265,7 @@ export default function Contact({ data }) {
                     value={formData.from_name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus: outline-none transition-colors duration-300"
+                    className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300"
                     placeholder="Steve Smith"
                   />
                 </div>
@@ -227,7 +281,7 @@ export default function Contact({ data }) {
                     type="email"
                     id="from_email"
                     name="from_email"
-                    value={formData.from_email}
+                    value={formData. from_email}
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300"
@@ -250,7 +304,7 @@ export default function Contact({ data }) {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus: outline-none transition-colors duration-300"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300"
                   placeholder="Project Discussion"
                 />
               </div>
@@ -269,23 +323,10 @@ export default function Contact({ data }) {
                   onChange={handleChange}
                   required
                   rows="6"
-                  className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus:border-white focus:outline-none transition-colors duration-300 resize-none"
+                  className="w-full px-4 py-3 rounded-xl border-2 border-white/20 bg-white/10 text-white placeholder-light-400 focus: border-white focus:outline-none transition-colors duration-300 resize-none"
                   placeholder="Tell me about your project..."
                 ></textarea>
               </div>
-
-              {submitStatus === "success" && (
-                <div className="bg-green-500/20 border-2 border-green-500 text-green-400 px-4 py-3 rounded-xl">
-                  ✅ Thank you! Your message has been sent successfully. 
-                </div>
-              )}
-
-              {submitStatus === "error" && (
-                <div className="bg-red-500/20 border-2 border-red-500 text-red-400 px-4 py-3 rounded-xl">
-                  ❌ Oops!  Something went wrong. Please try again or email me
-                  directly. 
-                </div>
-              )}
 
               <button
                 type="submit"
