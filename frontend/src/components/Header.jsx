@@ -293,7 +293,7 @@ export default function Navbar() {
               <a
                 href="/assets/Wahaj-Resume-MERN.pdf"
                 download
-                className="flex items-center gap-2 bg-white hover: bg-light-200 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-white/20"
+                className="flex items-center gap-2 bg-white hover:bg-light-200 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-white/20"
               >
                 <Briefcase size={18} />
                 Resume
