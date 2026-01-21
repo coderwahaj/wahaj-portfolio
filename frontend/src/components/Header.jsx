@@ -246,11 +246,20 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 sm:px-12">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Mobile Menu Button - LEFT SIDE */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden text-white hover:text-light-200 transition-colors z-50 relative"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+
+            {/* Logo - CENTER on mobile, LEFT on desktop */}
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, "home")}
-              className="text-2xl sm:text-3xl font-bold text-white hover:text-light-200 transition-colors relative group z-50"
+              className="text-2xl sm:text-3xl font-bold text-white hover:text-light-200 transition-colors relative group z-50 lg:order-first"
             >
               Wahaj
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-light-200 to-white group-hover:w-full transition-all duration-300"></span>
@@ -262,7 +271,7 @@ export default function Navbar() {
                 <a
                   key={item. id}
                   href={`#${item.id}`}
-                  onClick={(e) => handleNavClick(e, item. id)}
+                  onClick={(e) => handleNavClick(e, item.id)}
                   className={`relative text-base font-medium transition-all duration-300 group ${
                     activeSection === item.id
                       ? "text-white"
@@ -284,21 +293,15 @@ export default function Navbar() {
               <a
                 href="/assets/Wahaj-Resume-MERN.pdf"
                 download
-                className="flex items-center gap-2 bg-white hover: bg-light-200 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover: shadow-xl hover:shadow-white/20"
+                className="flex items-center gap-2 bg-white hover: bg-light-200 text-dark-900 font-semibold px-6 py-3 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-white/20"
               >
                 <Briefcase size={18} />
                 Resume
               </a>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden text-white hover:text-light-200 transition-colors z-50 relative"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            {/* Empty div for spacing on mobile (keeps logo centered) */}
+            <div className="lg:hidden w-7"></div>
           </div>
         </div>
       </nav>
@@ -312,10 +315,10 @@ export default function Navbar() {
         />
       )}
 
-      {/* Mobile Slide-in Menu */}
+      {/* Mobile Slide-in Menu - FROM LEFT */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-80 max-w-[85vw] bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out overflow-y-auto ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 shadow-2xl z-50 lg:hidden transform transition-transform duration-300 ease-in-out overflow-y-auto ${
+          isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Mobile Menu Header */}
@@ -351,16 +354,16 @@ export default function Navbar() {
               }}
               className={`flex items-center gap-3 px-6 py-4 rounded-xl transition-all duration-300 ${
                 activeSection === item.id
-                  ? "bg-white/10 text-white border-l-4 border-white shadow-lg"
-                  : "text-light-400 hover:bg-white/5 hover:text-white hover: border-l-4 hover: border-light-400"
+                  ?  "bg-white/10 text-white border-l-4 border-white shadow-lg"
+                  : "text-light-400 hover:bg-white/5 hover:text-white hover: border-l-4 hover:border-light-400"
               }`}
               style={{
                 animation: isMenuOpen
-                  ? `slideIn 0.3s ease-out ${index * 50}ms both`
+                  ?  `slideIn 0.3s ease-out ${index * 50}ms both`
                   : "none",
               }}
             >
-              <span className="text-lg font-medium">{item. label}</span>
+              <span className="text-lg font-medium">{item.label}</span>
             </a>
           ))}
 
@@ -381,8 +384,8 @@ export default function Navbar() {
       <style jsx>{`
         @keyframes slideIn {
           from {
-            opacity: 0;
-            transform: translateX(20px);
+            opacity:  0;
+            transform: translateX(-20px);
           }
           to {
             opacity: 1;
